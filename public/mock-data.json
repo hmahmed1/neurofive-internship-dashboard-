@@ -1,0 +1,167 @@
+[
+  {
+    "id": "1",
+    "title": "Frontend Developer Intern",
+    "company": "Neurofive",
+    "location": "Remote",
+    "category": "Frontend",
+    "tags": [
+      "React",
+      "TypeScript",
+      "CSS"
+    ],
+    "stipend": "PKR 25,000 / month",
+    "duration": "3 months",
+    "postedDate": "2026-01-05",
+    "description": "Work with the product team to build and ship UI features for our internal dashboard. Heavy focus on React, TypeScript and code review.",
+    "requirements": [
+      "Solid HTML/CSS fundamentals",
+      "ES6+ JavaScript",
+      "Basic Git workflow"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Backend Engineering Intern",
+    "company": "DataForge",
+    "location": "Lahore",
+    "category": "Backend",
+    "tags": [
+      "Node.js",
+      "Express",
+      "PostgreSQL"
+    ],
+    "stipend": "PKR 30,000 / month",
+    "duration": "6 months",
+    "postedDate": "2026-01-08",
+    "description": "Build REST APIs, write migrations and help scale our ingestion pipeline.",
+    "requirements": [
+      "Node.js basics",
+      "SQL knowledge",
+      "Understanding of HTTP"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "UI/UX Design Intern",
+    "company": "PixelCraft",
+    "location": "Karachi",
+    "category": "Design",
+    "tags": [
+      "Figma",
+      "Wireframing",
+      "Design Systems"
+    ],
+    "stipend": "PKR 20,000 / month",
+    "duration": "3 months",
+    "postedDate": "2026-01-10",
+    "description": "Design flows and high-fidelity screens for a fintech mobile app.",
+    "requirements": [
+      "Figma proficiency",
+      "Portfolio of 2+ projects"
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Full Stack Intern",
+    "company": "CloudNest",
+    "location": "Remote",
+    "category": "Full Stack",
+    "tags": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "stipend": "PKR 35,000 / month",
+    "duration": "6 months",
+    "postedDate": "2026-01-12",
+    "description": "Own features end to end — from database schema to React component.",
+    "requirements": [
+      "React basics",
+      "REST APIs",
+      "Git & GitHub"
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Data Science Intern",
+    "company": "InsightLab",
+    "location": "Islamabad",
+    "category": "Data",
+    "tags": [
+      "Python",
+      "Pandas",
+      "SQL"
+    ],
+    "stipend": "PKR 28,000 / month",
+    "duration": "4 months",
+    "postedDate": "2026-01-14",
+    "description": "Analyse user behaviour data and build dashboards for the growth team.",
+    "requirements": [
+      "Python",
+      "Pandas/NumPy",
+      "Basic statistics"
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Mobile App Intern (React Native)",
+    "company": "AppWorks",
+    "location": "Remote",
+    "category": "Mobile",
+    "tags": [
+      "React Native",
+      "Expo",
+      "TypeScript"
+    ],
+    "stipend": "PKR 30,000 / month",
+    "duration": "3 months",
+    "postedDate": "2026-01-15",
+    "description": "Ship cross-platform screens and integrate push notifications.",
+    "requirements": [
+      "React fundamentals",
+      "React Native basics"
+    ]
+  },
+  {
+    "id": "7",
+    "title": "QA Automation Intern",
+    "company": "TestHive",
+    "location": "Lahore",
+    "category": "QA",
+    "tags": [
+      "Playwright",
+      "JavaScript",
+      "CI"
+    ],
+    "stipend": "PKR 22,000 / month",
+    "duration": "3 months",
+    "postedDate": "2026-01-16",
+    "description": "Write end-to-end test suites and wire them into GitHub Actions.",
+    "requirements": [
+      "JavaScript",
+      "Attention to detail"
+    ]
+  },
+  {
+    "id": "8",
+    "title": "DevOps Intern",
+    "company": "CloudNest",
+    "location": "Karachi",
+    "category": "DevOps",
+    "tags": [
+      "Docker",
+      "Linux",
+      "GitHub Actions"
+    ],
+    "stipend": "PKR 32,000 / month",
+    "duration": "6 months",
+    "postedDate": "2026-01-18",
+    "description": "Containerise services and improve deployment pipelines.",
+    "requirements": [
+      "Linux CLI",
+      "Docker basics",
+      "Git"
+    ]
+  }
+]

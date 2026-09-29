@@ -11,44 +11,45 @@ import EmptyState from "../components/EmptyState";
 function HomePage() {
   const { internships, status, error, reload } = useInternships();
 
-  // Search + Filter states
   const [searchTerm, setSearchTerm] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
 
-  // Debounced search (300ms wait)
   const debouncedSearch = useDebounce(searchTerm, 300);
 
-  // Filter options nikalo (duplicate hata kar)
   const locationOptions = useMemo(
-    () => Array.from(new Set(internships.map((item) => item.location))).sort(),
+    () => Array.from(new Set(internships.map((i) => i.location))).sort(),
     [internships]
   );
 
   const categoryOptions = useMemo(
-    () => Array.from(new Set(internships.map((item) => item.category))).sort(),
+    () => Array.from(new Set(internships.map((i) => i.category))).sort(),
     [internships]
   );
 
-  // AND logic: Search + Location + Category sab match hone chahiye
   const visibleInternships = useMemo(() => {
     const query = debouncedSearch.trim().toLowerCase();
-
     return internships.filter((item) => {
       const matchesSearch =
         query.length === 0 ||
         item.title.toLowerCase().includes(query) ||
         item.company.toLowerCase().includes(query);
-
-      const matchesLocation =
-        locationFilter === "" || item.location === locationFilter;
-
-      const matchesCategory =
-        categoryFilter === "" || item.category === categoryFilter;
-
+      const matchesLocation = locationFilter === "" || item.location === locationFilter;
+      const matchesCategory = categoryFilter === "" || item.category === categoryFilter;
       return matchesSearch && matchesLocation && matchesCategory;
     });
   }, [internships, debouncedSearch, locationFilter, categoryFilter]);
+
+  // Stat numbers
+  const stats = useMemo(
+    () => [
+      { label: "Total Internships", value: internships.length },
+      { label: "Remote", value: internships.filter((i) => i.location === "Remote").length },
+      { label: "Locations", value: new Set(internships.map((i) => i.location)).size },
+      { label: "Categories", value: new Set(internships.map((i) => i.category)).size },
+    ],
+    [internships]
+  );
 
   const hasActiveFilters =
     searchTerm !== "" || locationFilter !== "" || categoryFilter !== "";
@@ -59,61 +60,42 @@ function HomePage() {
     setCategoryFilter("");
   }
 
-  // Loading state
-  if (status === "loading") {
-    return <LoadingState />;
-  }
-
-  // Error state
-  if (status === "error") {
-    return <ErrorState message={error ?? "Unknown error"} onRetry={reload} />;
-  }
+  if (status === "loading") return <LoadingState />;
+  if (status === "error") return <ErrorState message={error ?? "Unknown error"} onRetry={reload} />;
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        fontFamily: "sans-serif",
-        maxWidth: "1100px",
-        margin: "0 auto",
-      }}
-    >
-      <h1>Open Internships</h1>
-      <p style={{ color: "#666" }}>
-        {visibleInternships.length} of {internships.length} postings
+    <div>
+      <h1 style={{ marginTop: 0 }}>Dashboard</h1>
+      <p style={{ color: "#5a6070", marginTop: "-8px" }}>
+        {visibleInternships.length} of {internships.length} internships shown
       </p>
 
-      {/* Toolbar: Search + Filters */}
+      {/* Stat Cards */}
+      <section className="stats-grid" aria-label="Overview">
+        {stats.map((stat) => (
+          <article key={stat.label} className="stat-card">
+            <p className="stat-card__label">{stat.label}</p>
+            <p className="stat-card__value">{stat.value}</p>
+          </article>
+        ))}
+      </section>
+
+      {/* Toolbar */}
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
           gap: "16px",
           alignItems: "flex-end",
-          marginTop: "20px",
           marginBottom: "24px",
         }}
       >
-        <SearchBar
-          value={searchTerm}
-          onChange={setSearchTerm}
-          placeholder="Search by title or company..."
-        />
-        <FilterSelect
-          label="Location"
-          value={locationFilter}
-          options={locationOptions}
-          onChange={setLocationFilter}
-        />
-        <FilterSelect
-          label="Category"
-          value={categoryFilter}
-          options={categoryOptions}
-          onChange={setCategoryFilter}
-        />
+        <SearchBar value={searchTerm} onChange={setSearchTerm} placeholder="Search by title or company..." />
+        <FilterSelect label="Location" value={locationFilter} options={locationOptions} onChange={setLocationFilter} />
+        <FilterSelect label="Category" value={categoryFilter} options={categoryOptions} onChange={setCategoryFilter} />
       </div>
 
-      {/* List ya Empty State */}
+      {/* Cards */}
       {visibleInternships.length === 0 ? (
         <EmptyState
           title="No internships match your search"
